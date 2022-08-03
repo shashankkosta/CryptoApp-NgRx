@@ -1,0 +1,13 @@
+<ul class="list-group">
+  <a
+    *ngFor="let tick of ticks$ | async"
+    class="list-group-item list-group-item-action flex-column align-items-start"
+    [class.active]="selectedTick?.s === tick.s"
+    (click)="onSelect(tick)"
+  >
+    <app-crypto-list-item
+      [symbol]="tick.s"
+      [closePrice]="tick.c"
+    ></app-crypto-list-item>
+  </a>
+</ul>

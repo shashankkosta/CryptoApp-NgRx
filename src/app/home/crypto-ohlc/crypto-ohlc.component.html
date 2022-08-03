@@ -1,0 +1,49 @@
+<div class="card col-md-5" *ngIf="selectedSymbol$ | async">
+  <div class="card-body">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ (selectedSymbol$ | async)?.symbol }}</h5>
+      <small>{{ (selectedSymbol$ | async)?.close | number }}</small>
+    </div>
+    <div>
+      <p
+        class="card-text small text-muted d-flex w-100 justify-content-between"
+      >
+        <small>Open {{ (selectedSymbol$ | async)?.open | number }}</small>
+        <small>High {{ (selectedSymbol$ | async)?.high | number }}</small>
+        <small>Low {{ (selectedSymbol$ | async)?.low | number }}</small>
+        <small>Close {{ (selectedSymbol$ | async)?.close | number }}</small>
+      </p>
+    </div>
+  </div>
+  <div class="card-footer text-muted btn-group btn-group-sm" role="group">
+    <div class="form-group row">
+      <label for="inputQuantity" class="col-sm-4">
+        <small>Quantity</small>
+      </label>
+      <div class="col-sm-4">
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          id="inputQuantity"
+          #qty
+        />
+      </div>
+      <div class="col-sm-4 btn-group btn-group-sm">
+        <button
+          type="button"
+          (click)="onBuySell('Buy', qty)"
+          class="btn btn-primary"
+        >
+          Buy
+        </button>
+        <button
+          type="button"
+          (click)="onBuySell('Sell', qty)"
+          class="btn btn-danger"
+        >
+          Sell
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
